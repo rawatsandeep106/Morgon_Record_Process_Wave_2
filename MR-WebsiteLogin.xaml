@@ -274,7 +274,7 @@
                   <Delay Duration="00:00:00" sap:VirtualizedContainerService.HintSize="334,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
                   <ui:UiElementExists DisplayName="Home Page Exists?" Exists="[out_LoginSuccess]" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="UiElementExists_1">
                     <ui:UiElementExists.Target>
-                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="df2def65-3806-4256-96cd-30421aebbf4e" InformativeScreenshot="4d98f3c1ebd5b3ba2e4b875d112422a8" Selector="&lt;html app='chrome.exe' title='eCW (Records, Morgan )' /&gt;&lt;webctrl id='jellybean-panelLink65' tag='A' /&gt;" TimeoutMS="120000" WaitForReady="COMPLETE" />
+                      <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="df2def65-3806-4256-96cd-30421aebbf4e" InformativeScreenshot="4d98f3c1ebd5b3ba2e4b875d112422a8" Selector="&lt;html app='chrome.exe' title='eCW (* )' /&gt;&lt;webctrl id='jellybean-panelLink65' tag='A' /&gt;" TimeoutMS="120000" WaitForReady="COMPLETE" />
                     </ui:UiElementExists.Target>
                   </ui:UiElementExists>
                 </Sequence>

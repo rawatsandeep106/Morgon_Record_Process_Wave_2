@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>728,2507</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>845,2507</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MR_MedicalSummaryDownload_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="21">
@@ -70,7 +70,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="510,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;Output\&quot;+Now.ToString(&quot;dd MMM yyyy&quot;)+&quot;\&quot;+in_PatientName.Trim.ToUpper+&quot; &quot;+in_DOB.Trim]" />
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Patient Hub Window" sap:VirtualizedContainerService.HintSize="510,2091" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8e126eb568da812654bfa9520818ca90" Selector="&lt;html app='chrome.exe' title='eCW (Records, Morgan )' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Patient Hub Window" sap:VirtualizedContainerService.HintSize="510,2091" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8e126eb568da812654bfa9520818ca90" Selector="&lt;html app='chrome.exe' title='eCW (*)' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>

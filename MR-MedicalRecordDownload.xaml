@@ -7,10 +7,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>778,2724</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>870,4960</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MR_MedicalRecordDownload_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="21">
+    <scg:List x:TypeArguments="x:String" Capacity="42">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -32,10 +32,13 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="22">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -58,32 +61,35 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MR_MedicalRecordDownload" sap:VirtualizedContainerService.HintSize="788,2519" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MR_MedicalRecordDownload" sap:VirtualizedContainerService.HintSize="880,4755" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="varCheckStatus" />
       <Variable x:TypeArguments="x:Boolean" Name="varFolderExist" />
+      <Variable x:TypeArguments="x:String" Name="varPatientName" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser Patient Hub Window" sap:VirtualizedContainerService.HintSize="746,2427" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="89d77520a6f9b3a7f327ac34b2f02e6e" Selector="&lt;html app='chrome.exe' title='eCW (Records, Morgan )' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser Patient Hub Window" sap:VirtualizedContainerService.HintSize="838,4663" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="89d77520a6f9b3a7f327ac34b2f02e6e" Selector="&lt;html app='chrome.exe' title='eCW (*)' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="712,2281" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="804,4517" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 <x:Boolean x:Key="IsPinned">False</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear (Medical Record Button)" sap:VirtualizedContainerService.HintSize="670,51" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="False">
+            <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear (Medical Record Button)" sap:VirtualizedContainerService.HintSize="762,51" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_1" RepeatForever="False">
               <ui:OnUiElementAppear.Body>
                 <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,198" sap2010:WorkflowViewState.IdRef="Sequence_2">
                   <sap:WorkflowViewStateService.ViewState>
@@ -129,46 +135,56 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:OnUiElementAppear>
-            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Generate Medical Records" sap:VirtualizedContainerService.HintSize="670,2098" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="ce92aad5a05cd2834e3ff1c1ad259a27" Selector="&lt;wnd app='winprojecte.exe' cls='HwndWrapper*' title='PrintMedicalRecords' /&gt;">
+            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Generate Medical Records" sap:VirtualizedContainerService.HintSize="762,4334" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="ce92aad5a05cd2834e3ff1c1ad259a27" Selector="&lt;wnd app='winprojecte.exe' cls='HwndWrapper*' title='PrintMedicalRecords' /&gt;">
               <ui:WindowScope.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                   </ActivityAction.Argument>
-                  <Sequence sap:VirtualizedContainerService.HintSize="636,1952" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                  <Sequence sap:VirtualizedContainerService.HintSize="728,4188" sap2010:WorkflowViewState.IdRef="Sequence_32">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="594,1714" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="686,3950" sap2010:WorkflowViewState.IdRef="Sequence_24">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
-                      <Sequence DisplayName="Checking All Tabs" sap:VirtualizedContainerService.HintSize="552,234" sap2010:WorkflowViewState.IdRef="Sequence_30">
+                      <Sequence DisplayName="Checking All Tabs" sap:VirtualizedContainerService.HintSize="644,2470" sap2010:WorkflowViewState.IdRef="Sequence_30">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                             <x:Boolean x:Key="IsPinned">False</x:Boolean>
                           </scg:Dictionary>
                         </sap:WorkflowViewStateService.ViewState>
-                        <ui:OnImageAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" DisplayName="On Image Appear Cases Types(Client's Machine)" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="OnImageAppear_2" RepeatForever="False">
-                          <ui:OnImageAppear.Body>
-                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="568,582" sap2010:WorkflowViewState.IdRef="Sequence_26">
+                        <Assign sap:VirtualizedContainerService.HintSize="602,60" sap2010:WorkflowViewState.IdRef="Assign_1">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:String">[varPatientName]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:String">[Left(in_PatientName,2)]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear Patient Name" sap:VirtualizedContainerService.HintSize="602,1816" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2">
+                          <ui:OnUiElementAppear.Body>
+                            <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="568,1640" sap2010:WorkflowViewState.IdRef="Sequence_26">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                 </scg:Dictionary>
                               </sap:WorkflowViewStateService.ViewState>
-                              <Sequence DisplayName="Encounter Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_19">
+                              <Sequence DisplayName="Encounter Tab" sap:VirtualizedContainerService.HintSize="526,727" sap2010:WorkflowViewState.IdRef="Sequence_19">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
+                                <Delay DisplayName="Delay 400ms" Duration="[TimeSpan.FromMilliseconds(400)]" sap:VirtualizedContainerService.HintSize="484,22" sap2010:WorkflowViewState.IdRef="Delay_2" />
                                 <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click 'Encounter Tab" sap:VirtualizedContainerService.HintSize="484,106" sap2010:WorkflowViewState.IdRef="Click_12" KeyModifiers="None" MouseButton="BTN_LEFT">
                                   <ui:Click.CursorPosition>
                                     <ui:CursorPosition Position="Center">
@@ -233,10 +249,10 @@
                                   </If.Else>
                                 </If>
                               </Sequence>
-                              <Sequence DisplayName="Labs Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_20">
+                              <Sequence DisplayName="Labs Tab" sap:VirtualizedContainerService.HintSize="526,463" sap2010:WorkflowViewState.IdRef="Sequence_20">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                     <x:Boolean x:Key="IsPinned">False</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
@@ -310,7 +326,7 @@
                                   </If.Else>
                                 </If>
                               </Sequence>
-                              <Sequence DisplayName="Diagnostic Imaging Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_21">
+                              <Sequence DisplayName="Diagnostic Imaging Tab" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_21">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -381,7 +397,7 @@
                                   </If.Else>
                                 </If>
                               </Sequence>
-                              <Sequence DisplayName="Procedures Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_22">
+                              <Sequence DisplayName="Procedures Tab" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_22">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -458,7 +474,7 @@
                                   </If.Else>
                                 </If>
                               </Sequence>
-                              <Sequence DisplayName="Patient Documents Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_23">
+                              <Sequence DisplayName="Patient Documents Tab" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_23">
                                 <sap:WorkflowViewStateService.ViewState>
                                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                     <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -530,25 +546,57 @@
                                 </If>
                               </Sequence>
                             </Sequence>
-                          </ui:OnImageAppear.Body>
-                          <ui:OnImageAppear.Image>
-                            <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAdCAYAAABSSnV3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPnSURBVHhe7VexbuMwDM3v3NYAXe4zbs0WZDrcJwRdDpmKjkE/4IAsAbwE6JiMHbsUSLauGTp47HCDjpQoiaYlx8HFTgDzAQ+wZEqkzSfSHpV/jVEqu6YKTdkLVWjKXjgYoS3/rJRX5KCEdjwelVfi4ISmuA5UaIpeMHihjUYjulJ0iarQNjP74gOnL5Vk/Te/Pszinu3POH78SK+5EFVo10UQ2tvjGF76zKy+YnJW0+r4ojw8mfHdk3ntan/BmxLa59Ysn7empOEQ4IRmK83YLA71BCGdCH31iXaV+fsn84aiQQElbGuUQqNqN9n48YuZ4PoN2N3PzIRVwmDT1hewjdD264VZ/PZcmu0n3bgwyt3SLHdtZFaa7TOPaWEKeMaL4lBU9o+87PM7odmEtaxe2F6xpYo1rvqhONg+aOMFyPfw92RF83vza+uHici29zN9AZuF5hJavLs5xH5dmD1dXxboq0USseqJZJe7ojPxwxOb4qG7wxWF1tTGbLJjRXHVCxONY5Fsbifvyz2lTyae1ZQql7Tjla6tL2Cj0JpaWeXEx0RUqx+J0u4D1Qrn/H5WMNG22DEby1RyIel+zwSSvuX8mmYz8deAdpV3IA8ExgTjQ0P8Db6odVLyUq3HiofdSyaekpwST44ZWyewKLhGobX1BTwptFQi8MX5hAEwka7llaYMdlQN8f1AS6wkq5a8ug3uKdthc2tN+46xAeB5CrzOxl9H/R4XGvmBip+K36474Sv8DLzmfgZEou13GY5hfuL/FPH76g7F6EQXvqGamBMlzsMe4S9U2mHrtOMzfAFb/Qx4wdkXiSd4YebhhHIhuntxHqtKpgKEMUJWKrkGkZrjyPmew7X0n4tfQsaFiHFE4ddj26/nIMDTvoLQkE5srBXR9xJWGT83BvG5xPtKRvNcGGw+/CQwP8EuJbQgWhrL/fhhaOsL2EpoCNv+QGjihAbgPE/Ke2HmaOfX0XSqmslTX1tjkUo6Iec7gETYFH8KSVsSlW2VFKOM1x5MiAfiOOWrIrSb4MZXLBrnBHkmc0L79uOXOKGxRcxrIoj3LT4hsayl8J8JKwKxvrIWINuLA+z5IOYhodgKc74rPy4kvlz8Kci4PHBefgNGOxSiG7fxdXNCCz8Bfq5ToZXm+09sObHkxxdJ1SEwtpEwByfenmhry5JtIdaDGKo2qTUErBB8LSUx7dslPMyHypKOv458HK4t0sDa8XfF9zvt6/YqWkds3ToVFlbUvB2e04oTUKGp0GqwIjvR9s/F4IWm6AcqNEUvUKEpeoEKTdELVGiKXqBCU/SCQQlNeT0ORmjK61KFpuyBxvwD5df7naStlCIAAAAASUVORK5CYII=" />
-                          </ui:OnImageAppear.Image>
-                          <ui:OnImageAppear.Target>
-                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="24f3e031-ad55-45a3-b630-35f256f6d12f" TimeoutMS="120000">
+                          </ui:OnUiElementAppear.Body>
+                          <ui:OnUiElementAppear.RepeatForever>
+                            <Literal x:TypeArguments="x:Boolean" />
+                          </ui:OnUiElementAppear.RepeatForever>
+                          <ui:OnUiElementAppear.Target>
+                            <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="03880330-02d6-418e-ad53-eeb92bae4731" InformativeScreenshot="68a881f5022f87ee17d4ed6370252857" Selector="&lt;ctrl automationid='PatientName' name='{{varPatientName}}*' /&gt;">
+                              <ui:Target.TimeoutMS>
+                                <InArgument x:TypeArguments="x:Int32" />
+                              </ui:Target.TimeoutMS>
                               <ui:Target.WaitForReady>
                                 <InArgument x:TypeArguments="ui:WaitForReady" />
                               </ui:Target.WaitForReady>
                             </ui:Target>
-                          </ui:OnImageAppear.Target>
+                          </ui:OnUiElementAppear.Target>
+                        </ui:OnUiElementAppear>
+                        <ui:CommentOut DisplayName="Comment Out-Case Type Appears" sap:VirtualizedContainerService.HintSize="602,331" sap2010:WorkflowViewState.IdRef="CommentOut_3">
+                          <ui:CommentOut.Body>
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="476,253" sap2010:WorkflowViewState.IdRef="Sequence_41">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <ui:OnImageAppear Body="{x:Null}" ContinueOnError="{x:Null}" FoundElement="{x:Null}" DisplayName="On Image Appear Cases Types(Client's Machine)" sap:VirtualizedContainerService.HintSize="434,161" sap2010:WorkflowViewState.IdRef="OnImageAppear_2" RepeatForever="False">
+                                <ui:OnImageAppear.Image>
+                                  <ui:ImageTarget Image="{x:Null}" Accuracy="0.8" Profile="Basic" TargetImageBase64="iVBORw0KGgoAAAANSUhEUgAAAJoAAAAdCAYAAABSSnV3AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPnSURBVHhe7VexbuMwDM3v3NYAXe4zbs0WZDrcJwRdDpmKjkE/4IAsAbwE6JiMHbsUSLauGTp47HCDjpQoiaYlx8HFTgDzAQ+wZEqkzSfSHpV/jVEqu6YKTdkLVWjKXjgYoS3/rJRX5KCEdjwelVfi4ISmuA5UaIpeMHihjUYjulJ0iarQNjP74gOnL5Vk/Te/Pszinu3POH78SK+5EFVo10UQ2tvjGF76zKy+YnJW0+r4ojw8mfHdk3ntan/BmxLa59Ysn7empOEQ4IRmK83YLA71BCGdCH31iXaV+fsn84aiQQElbGuUQqNqN9n48YuZ4PoN2N3PzIRVwmDT1hewjdD264VZ/PZcmu0n3bgwyt3SLHdtZFaa7TOPaWEKeMaL4lBU9o+87PM7odmEtaxe2F6xpYo1rvqhONg+aOMFyPfw92RF83vza+uHici29zN9AZuF5hJavLs5xH5dmD1dXxboq0USseqJZJe7ojPxwxOb4qG7wxWF1tTGbLJjRXHVCxONY5Fsbifvyz2lTyae1ZQql7Tjla6tL2Cj0JpaWeXEx0RUqx+J0u4D1Qrn/H5WMNG22DEby1RyIel+zwSSvuX8mmYz8deAdpV3IA8ExgTjQ0P8Db6odVLyUq3HiofdSyaekpwST44ZWyewKLhGobX1BTwptFQi8MX5hAEwka7llaYMdlQN8f1AS6wkq5a8ug3uKdthc2tN+46xAeB5CrzOxl9H/R4XGvmBip+K36474Sv8DLzmfgZEou13GY5hfuL/FPH76g7F6EQXvqGamBMlzsMe4S9U2mHrtOMzfAFb/Qx4wdkXiSd4YebhhHIhuntxHqtKpgKEMUJWKrkGkZrjyPmew7X0n4tfQsaFiHFE4ddj26/nIMDTvoLQkE5srBXR9xJWGT83BvG5xPtKRvNcGGw+/CQwP8EuJbQgWhrL/fhhaOsL2EpoCNv+QGjihAbgPE/Ke2HmaOfX0XSqmslTX1tjkUo6Iec7gETYFH8KSVsSlW2VFKOM1x5MiAfiOOWrIrSb4MZXLBrnBHkmc0L79uOXOKGxRcxrIoj3LT4hsayl8J8JKwKxvrIWINuLA+z5IOYhodgKc74rPy4kvlz8Kci4PHBefgNGOxSiG7fxdXNCCz8Bfq5ToZXm+09sObHkxxdJ1SEwtpEwByfenmhry5JtIdaDGKo2qTUErBB8LSUx7dslPMyHypKOv458HK4t0sDa8XfF9zvt6/YqWkds3ToVFlbUvB2e04oTUKGp0GqwIjvR9s/F4IWm6AcqNEUvUKEpeoEKTdELVGiKXqBCU/SCQQlNeT0ORmjK61KFpuyBxvwD5df7naStlCIAAAAASUVORK5CYII=" />
+                                </ui:OnImageAppear.Image>
+                                <ui:OnImageAppear.Target>
+                                  <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Selector="{x:Null}" Id="24f3e031-ad55-45a3-b630-35f256f6d12f" TimeoutMS="120000">
+                                    <ui:Target.WaitForReady>
+                                      <InArgument x:TypeArguments="ui:WaitForReady" />
+                                    </ui:Target.WaitForReady>
+                                  </ui:Target>
+                                </ui:OnImageAppear.Target>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </ui:OnImageAppear>
+                            </Sequence>
+                          </ui:CommentOut.Body>
                           <sap:WorkflowViewStateService.ViewState>
                             <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                              <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                               <x:Boolean x:Key="IsPinned">False</x:Boolean>
                             </scg:Dictionary>
                           </sap:WorkflowViewStateService.ViewState>
-                        </ui:OnImageAppear>
-                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
+                        </ui:CommentOut>
+                        <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="602,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                           <ui:CommentOut.Body>
                             <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_40">
                               <sap:WorkflowViewStateService.ViewState>
@@ -558,13 +606,13 @@
                               </sap:WorkflowViewStateService.ViewState>
                               <ui:OnImageAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" DisplayName="On Image Appear Cases Types(My Machine)" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="OnImageAppear_3" RepeatForever="False">
                                 <ui:OnImageAppear.Body>
-                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="242,582" sap2010:WorkflowViewState.IdRef="Sequence_38">
+                                  <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="568,582" sap2010:WorkflowViewState.IdRef="Sequence_38">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
-                                    <Sequence DisplayName="Encounter Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_33">
+                                    <Sequence DisplayName="Encounter Tab" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_33">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -635,7 +683,7 @@
                                         </If.Else>
                                       </If>
                                     </Sequence>
-                                    <Sequence DisplayName="Labs Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_34">
+                                    <Sequence DisplayName="Labs Tab" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_34">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -712,7 +760,7 @@
                                         </If.Else>
                                       </If>
                                     </Sequence>
-                                    <Sequence DisplayName="Diagnostic Imaging Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_35">
+                                    <Sequence DisplayName="Diagnostic Imaging Tab" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_35">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -783,7 +831,7 @@
                                         </If.Else>
                                       </If>
                                     </Sequence>
-                                    <Sequence DisplayName="Procedures Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_36">
+                                    <Sequence DisplayName="Procedures Tab" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_36">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -860,7 +908,7 @@
                                         </If.Else>
                                       </If>
                                     </Sequence>
-                                    <Sequence DisplayName="Patient Documents Tab" sap:VirtualizedContainerService.HintSize="200,66" sap2010:WorkflowViewState.IdRef="Sequence_37">
+                                    <Sequence DisplayName="Patient Documents Tab" sap:VirtualizedContainerService.HintSize="526,66" sap2010:WorkflowViewState.IdRef="Sequence_37">
                                       <sap:WorkflowViewStateService.ViewState>
                                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -960,7 +1008,7 @@
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:CommentOut>
                       </Sequence>
-                      <Sequence DisplayName="Saving PDF" sap:VirtualizedContainerService.HintSize="552,1348" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                      <Sequence DisplayName="Saving PDF" sap:VirtualizedContainerService.HintSize="644,1348" sap2010:WorkflowViewState.IdRef="Sequence_31">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1084,7 +1132,7 @@
                         </ui:Click>
                       </Sequence>
                     </Sequence>
-                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Close Button" sap:VirtualizedContainerService.HintSize="594,106" sap2010:WorkflowViewState.IdRef="Click_26" KeyModifiers="None" MouseButton="BTN_LEFT">
+                    <ui:Click AlterIfDisabled="{x:Null}" DelayBefore="{x:Null}" DelayMS="{x:Null}" SendWindowMessages="{x:Null}" SimulateClick="{x:Null}" ClickType="CLICK_SINGLE" DisplayName="Click Close Button" sap:VirtualizedContainerService.HintSize="686,106" sap2010:WorkflowViewState.IdRef="Click_26" KeyModifiers="None" MouseButton="BTN_LEFT">
                       <ui:Click.CursorPosition>
                         <ui:CursorPosition Position="Center">
                           <ui:CursorPosition.OffsetX>
@@ -1096,7 +1144,7 @@
                         </ui:CursorPosition>
                       </ui:Click.CursorPosition>
                       <ui:Click.Target>
-                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="64a6022c-5685-4ba9-9b41-3f01dcb36dac" InformativeScreenshot="59f5876f7309bfbe7ccc9030de3fa570" Selector="&lt;html app='chrome.exe' title='eCW (Records, Morgan )' /&gt;&lt;webctrl id='patient-hubBtn1' tag='BUTTON' aaname='×' class='close' innertext='×' type='button' /&gt;">
+                        <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="64a6022c-5685-4ba9-9b41-3f01dcb36dac" InformativeScreenshot="59f5876f7309bfbe7ccc9030de3fa570" Selector="&lt;html app='chrome.exe' title='eCW (*)' /&gt;&lt;webctrl id='patient-hubBtn1' tag='BUTTON' aaname='×' class='close' innertext='×' type='button' /&gt;">
                           <ui:Target.TimeoutMS>
                             <InArgument x:TypeArguments="x:Int32" />
                           </ui:Target.TimeoutMS>

@@ -1776,9 +1776,9 @@
     "restore": {
       "projectUniqueName": "Morgan Records Process",
       "projectName": "Morgan Records Process",
-      "projectPath": "C:\\Users\\User\\Desktop\\Damco RPA Projects\\Morgan Records Process\\.local",
+      "projectPath": "C:\\Users\\User\\Desktop\\Damco RPA Projects\\Morgan_Records_Process_Wave_2\\.local",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Damco RPA Projects\\Morgan Records Process\\.local"
+      "outputPath": "C:\\Users\\User\\Desktop\\Damco RPA Projects\\Morgan_Records_Process_Wave_2\\.local"
     },
     "frameworks": {
       "net461": {
