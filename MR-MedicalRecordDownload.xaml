@@ -35,6 +35,7 @@
       <x:String>System.Collections.ObjectModel</x:String>
       <x:String>System.Activities.DynamicUpdate</x:String>
       <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
@@ -168,7 +169,7 @@
                             <InArgument x:TypeArguments="x:String">[Left(in_PatientName,2)]</InArgument>
                           </Assign.Value>
                         </Assign>
-                        <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear Patient Name" sap:VirtualizedContainerService.HintSize="602,1816" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2">
+                        <ui:OnUiElementAppear ContinueOnError="{x:Null}" FoundElement="{x:Null}" WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="On Element Appear Patient Name" sap:VirtualizedContainerService.HintSize="602,1816" sap2010:WorkflowViewState.IdRef="OnUiElementAppear_2" RepeatForever="False">
                           <ui:OnUiElementAppear.Body>
                             <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="568,1640" sap2010:WorkflowViewState.IdRef="Sequence_26">
                               <sap:WorkflowViewStateService.ViewState>
@@ -547,9 +548,6 @@
                               </Sequence>
                             </Sequence>
                           </ui:OnUiElementAppear.Body>
-                          <ui:OnUiElementAppear.RepeatForever>
-                            <Literal x:TypeArguments="x:Boolean" />
-                          </ui:OnUiElementAppear.RepeatForever>
                           <ui:OnUiElementAppear.Target>
                             <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="03880330-02d6-418e-ad53-eeb92bae4731" InformativeScreenshot="68a881f5022f87ee17d4ed6370252857" Selector="&lt;ctrl automationid='PatientName' name='{{varPatientName}}*' /&gt;">
                               <ui:Target.TimeoutMS>
@@ -598,7 +596,7 @@
                         </ui:CommentOut>
                         <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="602,51" sap2010:WorkflowViewState.IdRef="CommentOut_2">
                           <ui:CommentOut.Body>
-                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="242,143" sap2010:WorkflowViewState.IdRef="Sequence_40">
+                            <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="644,143" sap2010:WorkflowViewState.IdRef="Sequence_40">
                               <sap:WorkflowViewStateService.ViewState>
                                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1046,7 +1044,7 @@
                                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                                   </scg:Dictionary>
                                 </sap:WorkflowViewStateService.ViewState>
-                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Filename with Path" sap:VirtualizedContainerService.HintSize="434,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[Environment.CurrentDirectory+&quot;\Output\&quot;+Now.ToString(&quot;dd MMM yyyy&quot;)+&quot;\&quot;+in_PatientName.Trim.ToUpper+&quot; &quot;+in_DOB.Trim+&quot;\MEDICAL RECORDS.pdf&quot;]">
+                                <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type Filename with Path" sap:VirtualizedContainerService.HintSize="434,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[Environment.CurrentDirectory+&quot;\Output\&quot;+Now.ToString(&quot;dd MMM yyyy&quot;)+&quot;\&quot;+Regex.Match(in_PatientName.Trim,&quot;(.*)\s?\(\w*\)&quot;,RegexOptions.IgnoreCase).Groups(1).Value.ToUpper+&quot; &quot;+in_DOB.Trim+&quot;\MEDICAL RECORD.pdf&quot;]">
                                   <ui:TypeInto.Target>
                                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="28ee5b73-504d-4a35-ad5d-291b97f7a9cc" InformativeScreenshot="05812d0957f281ddedc9e6a0586debd0" Selector="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;">
                                       <ui:Target.TimeoutMS>

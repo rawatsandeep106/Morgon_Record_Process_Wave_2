@@ -10,7 +10,7 @@
   <sap:VirtualizedContainerService.HintSize>845,2507</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MR_MedicalSummaryDownload_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="21">
+    <scg:List x:TypeArguments="x:String" Capacity="42">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -32,10 +32,11 @@
       <x:String>UiPath.Core</x:String>
       <x:String>UiPath.Core.Activities</x:String>
       <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Text.RegularExpressions</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="22">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -58,6 +59,7 @@
       <AssemblyReference>UiPath.Mail</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
   <Sequence DisplayName="MR_MedicalSummaryDownload" sap:VirtualizedContainerService.HintSize="552,2302" sap2010:WorkflowViewState.IdRef="Sequence_1">
@@ -69,7 +71,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="510,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;Output\&quot;+Now.ToString(&quot;dd MMM yyyy&quot;)+&quot;\&quot;+in_PatientName.Trim.ToUpper+&quot; &quot;+in_DOB.Trim]" />
+    <ui:CreateDirectory ContinueOnError="{x:Null}" DisplayName="Create Folder" sap:VirtualizedContainerService.HintSize="510,79" sap2010:WorkflowViewState.IdRef="CreateDirectory_1" Path="[&quot;Output\&quot;+Now.ToString(&quot;dd MMM yyyy&quot;)+&quot;\&quot;+Regex.Match(in_PatientName.Trim,&quot;(.*)\s?\(\w*\)&quot;,RegexOptions.IgnoreCase).Groups(1).Value.ToUpper+&quot; &quot;+in_DOB.Trim]" />
     <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Patient Hub Window" sap:VirtualizedContainerService.HintSize="510,2091" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="8e126eb568da812654bfa9520818ca90" Selector="&lt;html app='chrome.exe' title='eCW (*)' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
@@ -240,7 +242,7 @@
                         <x:Boolean x:Key="IsPinned">False</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type FileName along with location" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[Environment.CurrentDirectory+&quot;\Output\&quot;+Now.ToString(&quot;dd MMM yyyy&quot;)+&quot;\&quot;+in_PatientName.Trim.ToUpper+&quot; &quot;+in_DOB.Trim+&quot;\MEDICAL SUMMARY.pdf&quot;]">
+                    <ui:TypeInto AlterIfDisabled="{x:Null}" ClickBeforeTyping="{x:Null}" DelayBefore="{x:Null}" DelayBetweenKeys="{x:Null}" DelayMS="{x:Null}" EmptyField="{x:Null}" SendWindowMessages="{x:Null}" SimulateType="{x:Null}" Activate="True" DisplayName="Type FileName along with location" sap:VirtualizedContainerService.HintSize="334,134" sap2010:WorkflowViewState.IdRef="TypeInto_1" Text="[Environment.CurrentDirectory+&quot;\Output\&quot;+Now.ToString(&quot;dd MMM yyyy&quot;)+&quot;\&quot;+Regex.Match(in_PatientName.Trim,&quot;(.*)\s?\(\w*\)&quot;,RegexOptions.IgnoreCase).Groups(1).Value.ToUpper+&quot; &quot;+in_DOB.Trim+&quot;\MEDICAL SUMMARY.pdf&quot;]">
                       <ui:TypeInto.Target>
                         <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="bc3336a5-5b9d-4669-adcf-142ed889f909" InformativeScreenshot="0d7395e5e37bb08134652c97907997cb" Selector="&lt;wnd aaname='Explorer Pane' cls='DirectUIHWND' /&gt;&lt;wnd aaname='File name:' cls='ComboBox' /&gt;&lt;wnd ctrlid='1001' /&gt;">
                           <ui:Target.TimeoutMS>
