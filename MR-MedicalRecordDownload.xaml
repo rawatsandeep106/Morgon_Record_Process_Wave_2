@@ -7,10 +7,10 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>870,4960</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>870,5336</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>MR_MedicalRecordDownload_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="42">
+    <scg:List x:TypeArguments="x:String" Capacity="25">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -39,7 +39,7 @@
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="44">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="24">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -66,7 +66,7 @@
       <AssemblyReference>System.Memory</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="MR_MedicalRecordDownload" sap:VirtualizedContainerService.HintSize="880,4755" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="MR_MedicalRecordDownload" sap:VirtualizedContainerService.HintSize="880,5131" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="varCheckStatus" />
       <Variable x:TypeArguments="x:Boolean" Name="varFolderExist" />
@@ -77,13 +77,13 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser Patient Hub Window" sap:VirtualizedContainerService.HintSize="838,4663" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="89d77520a6f9b3a7f327ac34b2f02e6e" Selector="&lt;html app='chrome.exe' title='eCW (*)' /&gt;">
+    <ui:BrowserScope Browser="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Attach Browser Patient Hub Window" sap:VirtualizedContainerService.HintSize="838,5039" sap2010:WorkflowViewState.IdRef="BrowserScope_1" InformativeScreenshot="89d77520a6f9b3a7f327ac34b2f02e6e" Selector="&lt;html app='chrome.exe' title='eCW (*)' /&gt;">
       <ui:BrowserScope.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="804,4517" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="804,4893" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <sap:WorkflowViewStateService.ViewState>
               <scg:Dictionary x:TypeArguments="x:String, x:Object">
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -136,19 +136,19 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:OnUiElementAppear>
-            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Generate Medical Records" sap:VirtualizedContainerService.HintSize="762,4334" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="ce92aad5a05cd2834e3ff1c1ad259a27" Selector="&lt;wnd app='winprojecte.exe' cls='HwndWrapper*' title='PrintMedicalRecords' /&gt;">
+            <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" TimeoutMS="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Generate Medical Records" sap:VirtualizedContainerService.HintSize="762,4710" sap2010:WorkflowViewState.IdRef="WindowScope_1" InformativeScreenshot="ce92aad5a05cd2834e3ff1c1ad259a27" Selector="&lt;wnd app='winprojecte.exe' cls='HwndWrapper*' title='PrintMedicalRecords' /&gt;">
               <ui:WindowScope.Body>
                 <ActivityAction x:TypeArguments="x:Object">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
                   </ActivityAction.Argument>
-                  <Sequence sap:VirtualizedContainerService.HintSize="728,4188" sap2010:WorkflowViewState.IdRef="Sequence_32">
+                  <Sequence sap:VirtualizedContainerService.HintSize="728,4564" sap2010:WorkflowViewState.IdRef="Sequence_32">
                     <sap:WorkflowViewStateService.ViewState>
                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       </scg:Dictionary>
                     </sap:WorkflowViewStateService.ViewState>
-                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="686,3950" sap2010:WorkflowViewState.IdRef="Sequence_24">
+                    <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="686,4326" sap2010:WorkflowViewState.IdRef="Sequence_24">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1006,7 +1006,10 @@
                           </sap:WorkflowViewStateService.ViewState>
                         </ui:CommentOut>
                       </Sequence>
-                      <Sequence DisplayName="Saving PDF" sap:VirtualizedContainerService.HintSize="644,1348" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                      <Sequence DisplayName="Saving PDF" sap:VirtualizedContainerService.HintSize="644,1724" sap2010:WorkflowViewState.IdRef="Sequence_31">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="x:Boolean" Name="varMRRExists" />
+                        </Sequence.Variables>
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -1032,6 +1035,12 @@
                             </ui:Target>
                           </ui:Click.Target>
                         </ui:Click>
+                        <ui:PathExists DisplayName="Path Exists" Exists="[varMRRExists]" sap:VirtualizedContainerService.HintSize="510,89" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="[Environment.CurrentDirectory+&quot;\Output\&quot;+Now.ToString(&quot;dd MMM yyyy&quot;)+&quot;\&quot;+Regex.Match(in_PatientName.Trim,&quot;(.*)\s?\(\w*\)&quot;,RegexOptions.IgnoreCase).Groups(1).Value.ToUpper+&quot; &quot;+in_DOB.Trim+&quot;\MEDICAL RECORD.pdf&quot;]" PathType="File" />
+                        <If Condition="[varMRRExists]" DisplayName="If(MS file exists)" sap:VirtualizedContainerService.HintSize="510,207" sap2010:WorkflowViewState.IdRef="If_11">
+                          <If.Then>
+                            <ui:Delete ContinueOnError="{x:Null}" sap:VirtualizedContainerService.HintSize="200,22" sap2010:WorkflowViewState.IdRef="Delete_1" Path="[Environment.CurrentDirectory+&quot;\Output\&quot;+Now.ToString(&quot;dd MMM yyyy&quot;)+&quot;\&quot;+Regex.Match(in_PatientName.Trim,&quot;(.*)\s?\(\w*\)&quot;,RegexOptions.IgnoreCase).Groups(1).Value.ToUpper+&quot; &quot;+in_DOB.Trim+&quot;\MEDICAL RECORD.pdf&quot;]" />
+                          </If.Then>
+                        </If>
                         <ui:WindowScope ApplicationWindow="{x:Null}" SearchScope="{x:Null}" Window="{x:Null}" DisplayName="Attach Window Save As" sap:VirtualizedContainerService.HintSize="510,964" sap2010:WorkflowViewState.IdRef="WindowScope_2" InformativeScreenshot="e482a386ff7f3f37a405c08695ebcc67" Selector="&lt;wnd app='winprojecte.exe' cls='#32770' title='Save As' /&gt;" TimeoutMS="600000">
                           <ui:WindowScope.Body>
                             <ActivityAction x:TypeArguments="x:Object">
